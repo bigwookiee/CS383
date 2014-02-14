@@ -1,21 +1,22 @@
 @startuml
 hide circle
 
-Board *- Province
-Province *- Hex
+Board *-- Province
+Province *-- Hex
 Hex *- Stack
 Hex o- Vortex
 
 Stack o- MovableUnit
-Army o- MovableUnit
+Army o-- MovableUnit
 Player o- Army
 
 RandomEvent -- PreTurnPhase
 SolarConfiguration -- PostTurnPhase
 
-MovableUnit <|- Monster
-MovableUnit <|- ArmyUnit
+MovableUnit <|-- Monster
+ArmyUnit --|> MovableUnit
 MovableUnit <|- Character
+
 
 class GameTurn {
 turnNumber
