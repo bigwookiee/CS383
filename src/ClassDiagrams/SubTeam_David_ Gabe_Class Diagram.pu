@@ -4,63 +4,58 @@
 class Player{
 	-race : char
 	-playerOrder : int
-
+	--
 	+setRace(r : char)
 	+setNumber(n : int )
 	+getRace() : char
 	+getOrder() : int	
-
 	==
-	Author: David Klingenberg 
-}  
+	Author: David Klingenberg, c1
+}
 
 class Army{
 	-unitID : Unit[]
 	-playerOrder : int
-
+	--
 	+addUnit(id : Unit)
 	+removeUnit(id : Unit)
 	+getUnits() : Unit[]
-
 	==
-	Author: David Klingenberg 
+	Author: David Klingenberg, c2
 }
 
 class StellarCongfiguration{
 	-yellowSunPosition : int
 	-redSunPosition : char
 	-redSunStatus : int
-		
-
+	--
 	+<<constructor>>StellarCongfiguration(char redSunPos : char)
 	+getYelloSunPosition() : int
 	+getRedSunPosition() : char
 	+getBlueSunPosition() : char
 	+getRedSunStatus() : int
 	+getBlueSunPosition() : int
-
 	==
-	Author: David Klingenberg 
-}
+	Author: David Klingenberg, c3
+} 
 
 class Scenario {
 	-numerPlayers : int
 	-raceList : char[]
 	-unitsList : unit[]
-
+	--
 	+selectScenario()
 	+getRace(playerNum : int) : char
 	+getUnites(playerNum : int) : unit[]
-
 	==
-	Author: David Klingenberg  
+	Author: David Klingenberg, c4
 }
 
 class RandomEvent{
 	-currentEventKey : int
 	-currentEventLength : int
 	-currentEventDescription : int
-
+	--
 	+<<constructor>>RandomEvent(cEKey : int, cELength : int, cEDescription : int)
 	+setCurrentEventKey (cEKey : int)
 	+setCurrentEventLength (cELength :  int)
@@ -68,36 +63,83 @@ class RandomEvent{
 	+setCurrentEventKey () :  int
 	+setCurrentEventLength (): int
 	+setCurrentEventDescription() : int
-
 	==
-	Author: David Klingenberg 
+	Author: David Klingenberg, c5
 }
 
 class RandomEventTable{
 	-eventKey : int
 	-eventLength : int
 	-eventDescription : int
-
+	--
 	+<<constructor>>RandomEventTable(inEvent : int)
 	+<<constructor>>RandomEventTable(inEvent : int, die1 : int, die2 : int)
 	+getEventKey() : int
 	+getEventLength() : int
 	+getEventDescription() : String
-
 	==
-	Author: David Klingenberg 
+	Author: David Klingenberg, c6
+} 
+
+class Diplomacy{
+	==
+	Author: David Klingenberg, c7
+} 
+
+
+class PreTurnPhase
+class PlayerTurnPhase
+class PostTurnPhase
+class GameTurn
+class Spells
+class PlayerOrderDetermination
+class Alliances
+class SwordSorcery
+package MovementSubTeam2{ 
 }
 
-class Diplomacy
+package RandomMovment{
+}
 
-class PreTurnPhaze
+package GameSetUp{
+}
 
-class TurnPhaze
+package UnitsSubTeam1{
+}
 
-class PostTurnPhaze
+Package LoadSave{
+}
 
-class GameTurn
+SwordSorcery --* GameTurn
+SwordSorcery -* LoadSave
+GameSetUp *- SwordSorcery
+Scenario *- GameSetUp
 
-class Spells
+Scenario --* Player
+Scenario --* Army
+
+GameTurn *-- PostTurnPhase 
+GameTurn --* PreTurnPhase
+
+PlayerTurnPhase  -* “7..1” PostTurnPhase
+PreTurnPhase “1..7” -*  PlayerTurnPhase
+
+PreTurnPhase --* RandomEvent
+PlayerOrderDetermination *- PreTurnPhase
+Alliances *-- PreTurnPhase
+RandomEvent --* RandomEventTable
+
+PlayerTurnPhase --* Player
+Player --* Army
+Army --* MovementSubTeam2
+Army --* Spells
+UnitsSubTeam1 *- Army
+MovementSubTeam2 -* Spells
+
+PostTurnPhase --*  StellarCongfiguration
+RandomMovment *-- PostTurnPhase
+Diplomacy *- PostTurnPhase 
 
 @enduml
+
+
