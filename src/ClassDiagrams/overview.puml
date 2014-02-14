@@ -1,0 +1,105 @@
+@startuml
+hide circle
+
+Board *- Province
+Province *- Hex
+Hex *- Stack
+Hex o- Vortex
+
+Stack o- MovableUnit
+Army o- MovableUnit
+Player o- Army
+
+RandomEvent -- PreTurnPhase
+SolarConfiguration -- PostTurnPhase
+
+MovableUnit <|- Monster
+MovableUnit <|- ArmyUnit
+MovableUnit <|- Character
+
+class GameTurn {
+turnNumber
+totalTurns
+}
+
+class PlayerTurnPhase {
+
+}
+
+Character *- TalismanOfOrb
+
+ArmyUnit <- FlyingUnit
+
+class Board {
+Display()
+}
+
+class Stack {
+getUnitCount()
+removeExcess()
+}
+
+class Hex {
+address
+terrainType
+}
+
+class Vortex {
+location
+destroyVortex()
+destroyUnits()
+}
+
+class Player {
+}
+
+class SolarConfiguration {
+yellowSunPosition
+redSunPosition
+advanceTime()
+}
+
+class Army {
+unitID
+}
+
+class Spell {
+name
+mannaCost
+powerLevel
+range
+cast()
+}
+
+class Scenario {
+}
+
+class Diplomacy {
+}
+
+class RandomEvent {
+}
+
+class MovableUnit {
+range
+race
+move()
+}
+
+class ArmyUnit {
+UnitType
+AttackingStrength
+DefendingStrength
+}
+
+class Character {
+NameID
+}
+
+class TalismanOfOrb {
+}
+
+class Monster {
+}
+
+@enduml
