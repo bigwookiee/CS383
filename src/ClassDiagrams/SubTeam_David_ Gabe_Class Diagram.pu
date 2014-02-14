@@ -1,0 +1,62 @@
+@startuml
+
+
+class Player{
+	-char race
+	-int playNumber
+
+	+SetRace(char r)
+	+SetNumber(int n)
+	+char ListRace()
+	+int ListNumber()	
+
+
+}  
+
+class Army{
+	-Unit[] unitID
+	-int playerNumber
+
+	+AddUnit(Unit id)
+	+RemoveUnit(Unit id)
+	+Unit[] ListUnits()
+}
+
+class StellarCongfiguration{
+	-int yellowSunPosition
+	-char redSunPosition
+
+	+SetRedSunPosition(char p)
+	+int ListYelloSunPosition()
+	+char ListRedSunPosition()
+	+char ListBlueSunPosition()
+
+}
+
+
+
+
+class Scenario {
+	
+	
+}
+
+class Diplomacy
+class RandomEvent
+class RandomEventTable {
+	+int inEvent
+	-int eventKey
+	-int eventLength
+	-String eventDescription
+
+	+RandomEventTable(int inEvent)
+	+int EventKey()
+	+int EventLength()
+	+String EventDescription()
+}
+class PreTurnPhaze
+class TurnPhaze
+class PostTurnPhaze
+class GameTurn
+
+@enduml
