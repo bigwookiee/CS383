@@ -2,61 +2,102 @@
 
 
 class Player{
-	-char race
-	-int playNumber
+	-race : char
+	-playerOrder : int
 
-	+SetRace(char r)
-	+SetNumber(int n)
-	+char ListRace()
-	+int ListNumber()	
+	+setRace(r : char)
+	+setNumber(n : int )
+	+getRace() : char
+	+getOrder() : int	
 
-
+	==
+	Author: David Klingenberg 
 }  
 
 class Army{
-	-Unit[] unitID
-	-int playerNumber
+	-unitID : Unit[]
+	-playerOrder : int
 
-	+AddUnit(Unit id)
-	+RemoveUnit(Unit id)
-	+Unit[] ListUnits()
+	+addUnit(id : Unit)
+	+removeUnit(id : Unit)
+	+getUnits() : Unit[]
+
+	==
+	Author: David Klingenberg 
 }
 
 class StellarCongfiguration{
-	-int yellowSunPosition
-	-char redSunPosition
+	-yellowSunPosition : int
+	-redSunPosition : char
+	-redSunStatus : int
+		
 
-	+SetRedSunPosition(char p)
-	+int ListYelloSunPosition()
-	+char ListRedSunPosition()
-	+char ListBlueSunPosition()
+	+<<constructor>>StellarCongfiguration(char redSunPos : char)
+	+getYelloSunPosition() : int
+	+getRedSunPosition() : char
+	+getBlueSunPosition() : char
+	+getRedSunStatus() : int
+	+getBlueSunPosition() : int
 
+	==
+	Author: David Klingenberg 
 }
 
-
-
-
 class Scenario {
-	
-	
+	-numerPlayers : int
+	-raceList : char[]
+	-unitsList : unit[]
+
+	+selectScenario()
+	+getRace(playerNum : int) : char
+	+getUnites(playerNum : int) : unit[]
+
+	==
+	Author: David Klingenberg  
+}
+
+class RandomEvent{
+	-currentEventKey : int
+	-currentEventLength : int
+	-currentEventDescription : int
+
+	+<<constructor>>RandomEvent(cEKey : int, cELength : int, cEDescription : int)
+	+setCurrentEventKey (cEKey : int)
+	+setCurrentEventLength (cELength :  int)
+	+setCurrentEventDescription(cEDescription : int)
+	+setCurrentEventKey () :  int
+	+setCurrentEventLength (): int
+	+setCurrentEventDescription() : int
+
+	==
+	Author: David Klingenberg 
+}
+
+class RandomEventTable{
+	-eventKey : int
+	-eventLength : int
+	-eventDescription : int
+
+	+<<constructor>>RandomEventTable(inEvent : int)
+	+<<constructor>>RandomEventTable(inEvent : int, die1 : int, die2 : int)
+	+getEventKey() : int
+	+getEventLength() : int
+	+getEventDescription() : String
+
+	==
+	Author: David Klingenberg 
 }
 
 class Diplomacy
-class RandomEvent
-class RandomEventTable {
-	+int inEvent
-	-int eventKey
-	-int eventLength
-	-String eventDescription
 
-	+RandomEventTable(int inEvent)
-	+int EventKey()
-	+int EventLength()
-	+String EventDescription()
-}
 class PreTurnPhaze
+
 class TurnPhaze
+
 class PostTurnPhaze
+
 class GameTurn
+
+class Spells
 
 @enduml
