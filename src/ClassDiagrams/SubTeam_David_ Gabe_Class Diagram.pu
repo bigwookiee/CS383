@@ -1,5 +1,5 @@
 @startuml
-
+hide circles  
 
 class Player{
 	-race : char
@@ -10,7 +10,7 @@ class Player{
 	+getRace() : char
 	+getOrder() : int	
 	==
-	Author: David Klingenberg, c1
+	Author: David Klingenberg
 }
 
 class Army{
@@ -21,7 +21,7 @@ class Army{
 	+removeUnit(id : Unit)
 	+getUnits() : Unit[]
 	==
-	Author: David Klingenberg, c2
+	Author: David Klingenberg
 }
 
 class StellarCongfiguration{
@@ -36,7 +36,7 @@ class StellarCongfiguration{
 	+getRedSunStatus() : int
 	+getBlueSunPosition() : int
 	==
-	Author: David Klingenberg, c3
+	Author: David Klingenberg
 } 
 
 class Scenario {
@@ -47,8 +47,9 @@ class Scenario {
 	+selectScenario()
 	+getRace(playerNum : int) : char
 	+getUnites(playerNum : int) : unit[]
+	+getNumberPlayers() : int
 	==
-	Author: David Klingenberg, c4
+	Author: David Klingenberg
 }
 
 class RandomEvent{
@@ -60,11 +61,11 @@ class RandomEvent{
 	+setCurrentEventKey (cEKey : int)
 	+setCurrentEventLength (cELength :  int)
 	+setCurrentEventDescription(cEDescription : int)
-	+setCurrentEventKey () :  int
-	+setCurrentEventLength (): int
-	+setCurrentEventDescription() : int
+	+getCurrentEventKey () :  int
+	+getCurrentEventLength (): int
+	+getCurrentEventDescription() : int
 	==
-	Author: David Klingenberg, c5
+	Author: David Klingenberg
 }
 
 class RandomEventTable{
@@ -77,13 +78,14 @@ class RandomEventTable{
 	+getEventKey() : int
 	+getEventLength() : int
 	+getEventDescription() : String
+	+getEventDescription(eKey) : String
 	==
-	Author: David Klingenberg, c6
+	Author: David Klingenberg
 } 
 
 class Diplomacy{
 	==
-	Author: David Klingenberg, c7
+	Author: David Klingenberg
 } 
 
 
@@ -92,28 +94,32 @@ class PlayerTurnPhase
 class PostTurnPhase
 class GameTurn
 class Spells
+class CounterSpells
 class PlayerOrderDetermination
 class Alliances
 class SwordSorcery
-package MovementSubTeam2{ 
-}
+class MannaRegeneration 
 
-package RandomMovment{
+class MovableUnit{
+}  
+note right  : See Sub diagram.
+
+class RandomMovment{
 }
 
 package GameSetUp{
 }
 
-package UnitsSubTeam1{
-}
-
 Package LoadSave{
 }
+
+
+
 
 SwordSorcery --* GameTurn
 SwordSorcery -* LoadSave
 GameSetUp *- SwordSorcery
-Scenario *- GameSetUp
+Scenario *- GameSetUp 
 
 Scenario --* Player
 Scenario --* Army
@@ -121,24 +127,33 @@ Scenario --* Army
 GameTurn *-- PostTurnPhase 
 GameTurn --* PreTurnPhase
 
-PlayerTurnPhase  -* “7..1” PostTurnPhase
-PreTurnPhase “1..7” -*  PlayerTurnPhase
+PlayerTurnPhase “<b>7..1</b>” -o  PostTurnPhase
+PreTurnPhase “<b>1..7</b>”  -o  PlayerTurnPhase
 
 PreTurnPhase --* RandomEvent
-PlayerOrderDetermination *- PreTurnPhase
+PlayerOrderDetermination *-- PreTurnPhase
 Alliances *-- PreTurnPhase
 RandomEvent --* RandomEventTable
 
 PlayerTurnPhase --* Player
-Player --* Army
-Army --* MovementSubTeam2
-Army --* Spells
-UnitsSubTeam1 *- Army
-MovementSubTeam2 -* Spells
+Player “<b>1..*</b>” --o Army
+Army “<b>1..*</b>” --o MovableUnit
 
-PostTurnPhase --*  StellarCongfiguration
-RandomMovment *-- PostTurnPhase
-Diplomacy *- PostTurnPhase 
+MovableUnit -- Spells : Affect unit(s),\nunit(s) movement,\nor hex(es)  
+MovableUnit -- CounterSpells : Cast by\nopposing player(s)
+CounterSpells - Spells : Negates Spells
+
+PostTurnPhase --* RandomMovment
+StellarCongfiguration *-- PostTurnPhase
+PostTurnPhase --* Diplomacy
+PostTurnPhase --* MannaRegeneration
+
+Alliances “<b>1..6</b>” --o Player
+Player *-- PlayerOrderDetermination
+
+RandomMovment “<b>1..*</b>” --o MovableUnit 
+MannaRegeneration “<b>1..*</b>” --o MovableUnit
+Diplomacy o-- “<b>*..1</b>” MovableUnit
 
 @enduml
 
