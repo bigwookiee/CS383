@@ -47,18 +47,65 @@ public class RandomEventTableTest {
      */
     @Test
     public void testRandEvent() {
+        
+        int d1 = 0;
+        int d2 = 0;
+        int result;
+        String result1;
+        
+        
         System.out.println("EventKey");
-        int result = rEvent.EventKey();
-        System.out.println(result + "\n");
+        result = rEvent.EventKey();
+        System.out.println(result);
         
         System.out.println("EventLength");
         result = rEvent.EventLength();
-        System.out.println(result + "\n");
+        System.out.println(result);
         
         System.out.println("Event Description");
-        String result1 = rEvent.EventDescription();
+        result1 = rEvent.EventDescription();
         System.out.println(result1 + "\n");
         
+        while (d1 <= 5){
+            while (d2 <= 5){
+                rEvent.NewRandomEvent(0, d1, d2);
+                
+                
+                System.out.println("EventKey");
+                result = rEvent.EventKey();
+                System.out.println(result);
+        
+                System.out.println("EventLength");
+                result = rEvent.EventLength();
+                System.out.println(result);
+        
+                System.out.println("Event Description");
+                result1 = rEvent.EventDescription();
+                System.out.println(result1 + "\n");
+               
+                d2 = d2 + 1;
+            }
+            
+            d1 = d1 + 1;
+            d2 = 0;
+        }
+        
+         rEvent.NewRandomEvent(13, 5, 21);
+                
+                
+                System.out.println("EventKey");
+                result = rEvent.EventKey();
+                System.out.println(result);
+        
+                System.out.println("EventLength");
+                result = rEvent.EventLength();
+                System.out.println(result);
+        
+                System.out.println("Event Description");
+                result1 = rEvent.EventDescription();
+                System.out.println(result1 + "\n");
+               
+                d2 = d2 + 1;
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
