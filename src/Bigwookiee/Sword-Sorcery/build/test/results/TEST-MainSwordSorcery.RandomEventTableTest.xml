@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="LivingRoom" name="MainSwordSorcery.RandomEventTableTest" skipped="0" tests="1" time="0.091" timestamp="2014-02-15T23:58:07">
+<testsuite errors="0" failures="0" hostname="LivingRoom" name="MainSwordSorcery.RandomEventTableTest" skipped="0" tests="1" time="0.058" timestamp="2014-02-16T03:07:35">
   <properties>
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="nb.wait.for.caches" value="true" />
@@ -40,7 +40,7 @@
     <property name="user.name" value="David" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner MainSwordSorcery.RandomEventTableTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\David\Documents\GitHub\CS383\src\Bigwookiee\Sword-Sorcery\build\test\results\TEST-MainSwordSorcery.RandomEventTableTest.xml crashfile=C:\Users\David\Documents\GitHub\CS383\src\Bigwookiee\Sword-Sorcery\build\junitvmwatcher1810940293269216751.properties propsfile=C:\Users\David\Documents\GitHub\CS383\src\Bigwookiee\Sword-Sorcery\build\junit3001849821356531988.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner MainSwordSorcery.RandomEventTableTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\David\Documents\GitHub\CS383\src\Bigwookiee\Sword-Sorcery\build\test\results\TEST-MainSwordSorcery.RandomEventTableTest.xml crashfile=C:\Users\David\Documents\GitHub\CS383\src\Bigwookiee\Sword-Sorcery\build\junitvmwatcher7076753083256335328.properties propsfile=C:\Users\David\Documents\GitHub\CS383\src\Bigwookiee\Sword-Sorcery\build\junit7667349042348443752.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -81,7 +81,6 @@
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="libs.junit.classpath" value="C:\Program Files\NetBeans 7.4\java\modules\ext\junit-3.8.2.jar" />
     <property name="libs.jaxb.javadoc" value="C:\Program Files\NetBeans 7.4\ide\docs\jaxb-api-doc.zip" />
-    <property name="org.openide.awt.SwingBrowserImpl.do-not-block-awt" value="true" />
     <property name="ant.home" value="C:\Program Files\NetBeans 7.4\extide\ant" />
     <property name="libs.junit_4.src" value="C:\Program Files\NetBeans 7.4\java\docs\junit-4.10-sources.jar" />
     <property name="libs.testng.classpath" value="C:\Program Files\NetBeans 7.4\platform\modules\ext\testng-6.8.1-dist.jar" />
@@ -182,7 +181,6 @@
     <property name="meta.inf.dir" value="src/META-INF" />
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="dist.jar" value="dist/Sword-Sorcery.jar" />
-    <property name="netbeans.automatic.build" value="true" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="ant.project.name" value="Sword-Sorcery" />
     <property name="netbeans.hash.code" value="unique=NBJDK_EXTIDE_JAVA_JDK06c2fccd7-967a-40bf-860d-1b103647c7a3_d51bc5df-4e77-4afa-9270-0e5828c41b92" />
@@ -288,9 +286,9 @@
     <property name="run.jvmargs" value="" />
     <property name="libs.ejb3-persistence.classpath" value="C:\Program Files\NetBeans 7.4\java\modules\ext\hibernate\hibernate-jpa-2.0-api-1.0.1.Final.jar" />
     <property name="libs.hibernate-persistencemodelgen.javadoc" value="" />
-    <property name="libs.JAXB-ENDORSED.src" value="" />
-    <property name="dist.archive.excludes" value="" />
     <property name="libs.spring-framework.javadoc" value="" />
+    <property name="dist.archive.excludes" value="" />
+    <property name="libs.JAXB-ENDORSED.src" value="" />
     <property name="libs.testng.javadoc" value="C:\Program Files\NetBeans 7.4\platform\docs\testng-6.8.1-javadoc.zip" />
     <property name="user.script" value="" />
     <property name="libs.PostgreSQLDriver.classpath" value="C:\Program Files\NetBeans 7.4\ide\modules\ext\postgresql-9.2-1002.jdbc4.jar" />
@@ -307,13 +305,13 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="MainSwordSorcery.RandomEventTableTest" name="testRandEvent" time="0.005" />
+  <testcase classname="MainSwordSorcery.RandomEventTableTest" name="testRandEvent" time="0.006" />
   <system-out><![CDATA[EventKey
-16
+13
 EventLength
-1
+3
 Event Description
-Windstorm.
+Drought.
 
 EventKey
 1
