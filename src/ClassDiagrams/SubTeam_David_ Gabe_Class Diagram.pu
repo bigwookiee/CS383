@@ -24,12 +24,12 @@ class Army{
 	Author: David Klingenberg
 }
 
-class StellarCongfiguration{
+class StellarConfiguration{
 	-yellowSunPosition : int
 	-redSunPosition : char
 	-redSunStatus : int
 	--
-	+<<constructor>>StellarCongfiguration(char redSunPos : char)
+	+<<constructor>>StellarConfiguration(char redSunPos : char)
 	+getYelloSunPosition() : int
 	+getRedSunPosition() : char
 	+getBlueSunPosition() : char
@@ -93,12 +93,28 @@ class PreTurnPhase
 class PlayerTurnPhase
 class PostTurnPhase
 class GameTurn
-class Spells
+class Spells{
+	-name : String 
+  	-manaCost : int
+   	-range : int
+   	-powerLevel : int
+   	--
+   	+Cast(hexTarget) : void
+   	+Cast() : void
+   	==
+   	Author: Gabe Pearhill
+}
 class CounterSpells
 class PlayerOrderDetermination
 class Alliances
 class SwordSorcery
-class MannaRegeneration 
+class MannaRegeneration {
+	-rate : int
+	--
+	+Regenerate(Character) : int
+	==
+	Author: Gabe Pearhill
+}
 
 class MovableUnit{
 }  
@@ -144,7 +160,8 @@ MovableUnit -- CounterSpells : Cast by\nopposing player(s)
 CounterSpells - Spells : Negates Spells
 
 PostTurnPhase --* RandomMovment
-StellarCongfiguration *-- PostTurnPhase
+StellarConfiguration *-- PostTurnPhase
+StellarConfiguration -- MannaRegeneration : Regeneration dependant on\n stellar configuration
 PostTurnPhase --* Diplomacy
 PostTurnPhase --* MannaRegeneration
 
