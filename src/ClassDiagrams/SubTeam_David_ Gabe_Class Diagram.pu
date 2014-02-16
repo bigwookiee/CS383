@@ -95,9 +95,11 @@ class PostTurnPhase
 class GameTurn
 class Spells{
 	-name : String 
+	-type : char
   	-manaCost : int
    	-range : int
    	-powerLevel : int
+   	-resistable : bool
    	--
    	+Cast(hexTarget) : void
    	+Cast() : void
