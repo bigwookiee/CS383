@@ -9,294 +9,307 @@ package MainSwordSorcery;
 import java.util.Random;
 
 /**
- *
+ * 
  * @author David
  */
 public class RandomEventTable {
     private int eventKey;
     private int eventLength;
     private String eventDescription;
-    private int die1; 
-    private int die2;
-    private int currentEvent; 
-    Random generator = new Random();
+    private int currentEventKey; 
+    Random RandomGenerator = new Random();
     
         
-    private void KeyLookup(int d1, int d2){
-        if ((d1 >= 0 && d1 <= 5) && (d2 >= 0 && d2 <= 5))
-        switch (d1) {
+    private void KeyLookup(int sixSidedDieOne, int sixSidedDieTwo){
+        if (ValidaedDiceRangeForRandomEventTable(sixSidedDieOne, sixSidedDieTwo))
+        switch (sixSidedDieOne) {
             case 0 : 
-                if (d2 == 0) {eventKey = 1; break;}
-                if (d2 == 2) {eventKey = 7; break;}
-                if (d2 == 4) {eventKey = 8; break;}
-                if (d2 == 5) {eventKey = 9; break;} 
-                eventKey =0;
+                if (sixSidedDieTwo == 0) {SetEventKey(1); break;}
+                if (sixSidedDieTwo == 2) {SetEventKey(7); break;}
+                if (sixSidedDieTwo == 4) {SetEventKey(8); break;}
+                if (sixSidedDieTwo == 5) {SetEventKey(9); break;} 
+                SetEventKey(0);
                 break;
                 
             case 1 :
-                if (d2 == 1) {eventKey = 2; break;}
-                if (d2 == 3) {eventKey = 10; break;}
-                if (d2 == 5) {eventKey = 11; break;} 
-                eventKey =0;
+                if (sixSidedDieTwo == 1) {SetEventKey(2); break;}
+                if (sixSidedDieTwo == 3) {SetEventKey(10); break;}
+                if (sixSidedDieTwo == 5) {SetEventKey(11); break;} 
+                SetEventKey(0);
                 break;
                 
             case 2 :
-                if (d2 == 0) {eventKey = 12; break;}
-                if (d2 == 2) {eventKey = 3; break;}
-                if (d2 == 4) {eventKey = 13; break;}
-                if (d2 == 5) {eventKey = 14; break;} 
-                eventKey =0;
+                if (sixSidedDieTwo == 0) {SetEventKey(12); break;}
+                if (sixSidedDieTwo == 2) {SetEventKey(3); break;}
+                if (sixSidedDieTwo == 4) {SetEventKey(13); break;}
+                if (sixSidedDieTwo == 5) {SetEventKey(14); break;} 
+                SetEventKey(0);
                 break;
                 
             case 3 :
-                if (d2 == 1) {eventKey = 15; break;}
-                if (d2 == 3) {eventKey = 4; break;}
-                if (d2 == 5) {eventKey = 16; break;} 
-                eventKey =0;
+                if (sixSidedDieTwo == 1) {SetEventKey(15); break;}
+                if (sixSidedDieTwo == 3) {SetEventKey(4); break;}
+                if (sixSidedDieTwo == 5) {SetEventKey(16); break;} 
+                SetEventKey(0);
                 break;
                 
             case 4 :
-                if (d2 == 0) {eventKey = 17; break;}
-                if (d2 == 2) {eventKey = 18; break;} 
-                if (d2 == 4) {eventKey = 5; break;}
-                if (d2 == 5) {eventKey = 19; break;} 
-                eventKey =0;
+                if (sixSidedDieTwo == 0) {SetEventKey(17); break;}
+                if (sixSidedDieTwo == 2) {SetEventKey(18); break;} 
+                if (sixSidedDieTwo == 4) {SetEventKey(5); break;}
+                if (sixSidedDieTwo == 5) {SetEventKey(19); break;} 
+                SetEventKey(0);
                 break;
                 
             case 5 :
-                if (d2 == 1) {if (currentEvent == 13) eventKey = 0; else eventKey = 20; break;}
-                if (d2 == 3) {eventKey = 21; break;}
-                if (d2 == 5) {eventKey = 6; break;}
-                eventKey =0;
+                if (sixSidedDieTwo == 1) {if (GetCurrentEvent() == 13) SetEventKey(0); else SetEventKey(20); break;}
+                if (sixSidedDieTwo == 3) {SetEventKey(21); break;}
+                if (sixSidedDieTwo == 5) {SetEventKey(6); break;}
+                SetEventKey(0);
                 break;
                 
-            }//Case
-        
-        else {
-                if (d1 >= 6 || d1 < 0){ 
-                    System.out.println("Die1 has an invaled value of " + d1);
-                    
-                    if (d2 >= 6 || d2 < 0)
-                        System.out.println("Die2 has an invaled value of " + d2);
-                }
-                else 
-                    if (d2 >= 6 || d2 < 0)
-                        System.out.println("Die2 has an invaled value of " + d2);
-        }          
-                      
+            }//switch
+                          
     }//KeyLookUp
 
-    private void LookupDescription(int eKey){
-        if (eKey >=0 || eKey <=21)
-        switch (eKey) {
+    private boolean ValidaedDiceRangeForRandomEventTable(int sixSidedDieOne, int sixSidedDieTwo) {
+        
+        if ((sixSidedDieOne >= 0 && sixSidedDieOne <= 5) && (sixSidedDieTwo >= 0 && sixSidedDieTwo <= 5))
+                return true;
+        else{//alpha else
+            if (sixSidedDieOne >= 6 || sixSidedDieOne < 0){ 
+                    System.out.println("Die1 has an invaled value of " + sixSidedDieOne);
+                    
+                    if (sixSidedDieTwo >= 6 || sixSidedDieTwo < 0)
+                        System.out.println("Die2 has an invaled value of " + sixSidedDieTwo);
+                }//if
+                else 
+                    if (sixSidedDieTwo >= 6 || sixSidedDieTwo < 0)
+                        System.out.println("Die2 has an invaled value of " + sixSidedDieTwo);
+                        
+        }//alpha else
+            return false;
+    }
+
+    private void LookupDescription(int lookUpEventKey){
+        if (ValidateEventKeyRange(lookUpEventKey))
+          switch (lookUpEventKey) {
             
             case 0:
-                eventDescription = "No random event occurs.";
+                SetEventDescription("No random event occurs.");
                 break;
                 
             case 1:
-                eventDescription = "Yellow sun manna flux.";
+                SetEventDescription("Yellow sun manna flux.");
                 break;
                 
             case 2:
-                eventDescription = "Yellow sun manna drought.";
+                SetEventDescription("Yellow sun manna drought.");
                 break;
                 
             case 3:
-                eventDescription = "Blue sun manna flux.";
+                SetEventDescription("Blue sun manna flux.");
                 break;
                 
             case 4:
-                eventDescription = "Blue son manna drought";
+                SetEventDescription("Blue son manna drought");
                 break;
                 
             case 5:
-                eventDescription = "Red sun manna flux";
+                SetEventDescription("Red sun manna flux");
                 break;
             
             case 6:
-                eventDescription = "Red sun manna drought.";
+                SetEventDescription("Red sun manna drought.");
                 break;
                 
             case 7:
-                eventDescription = "Elven high holy day.";
+                SetEventDescription("Elven high holy day.");
                 break;
                
             case 8:
-                eventDescription = "Season of the midnight sun.";
+                SetEventDescription("Season of the midnight sun.");
                 break;
                 
             case 9:
-                eventDescription = "Church declares a special communion as a tribute to the Emperor.";
+                SetEventDescription("Church declares a special communion as a tribute to the Emperor.");
                 break;
                 
             case 10:
-                eventDescription = "Dwarrows hold a folk moot.";
+                SetEventDescription("Dwarrows hold a folk moot.");
                 break;
                 
             case 11:
-                eventDescription = "Conjunction of fear.";
+                SetEventDescription("Conjunction of fear.");
                 break;
             
             case 12:
-                eventDescription = "Corfluite collation.";
+                SetEventDescription("Corfluite collation.");
                 break;
                 
             case 13:
-                eventDescription = "Drought.";
+                SetEventDescription("Drought.");
                 break;
                 
             case 14:
-                eventDescription = "Flooding.";
+                SetEventDescription("Flooding.");
                 break;
                 
             case 15:
-                eventDescription = "Earthquake.";
+                SetEventDescription("Earthquake.");
                 break;
                 
             case 16:
-                eventDescription = "Windstorm.";
+                SetEventDescription("Windstorm.");
                 break;
                 
             case 17:               
-                eventDescription = "Mount GreyMoore and mount Gerlod erupt.";
+                SetEventDescription("Mount GreyMoore and mount Gerlod erupt.");
                 break;
                 
             case 18:
-                eventDescription = "The Mistral is blowing.";
+                SetEventDescription("The Mistral is blowing.");
                 break;
                 
             case 19:
-                eventDescription = "Vortex storm.";
+                SetEventDescription("Vortex storm.");
                 break;
                 
             case 20:
-                    eventDescription = "Killer penguin migration";
+                    SetEventDescription("Killer penguin migration");
                 break;
                 
             case 21:               
-                eventDescription = "Poisonous piranha infestation.";
+                SetEventDescription("Poisonous piranha infestation.");
                 break;
                 
             default:
                 break;
-        }//case 
-        else 
-            System.out.println("EventKey has an invaled value of " + eKey);
+        }//switch 
+     
+            
     }//DescriptionLookUp
+
+    private boolean ValidateEventKeyRange(int lookUpEventKey) {
+        if (lookUpEventKey >=0 || lookUpEventKey <=21)
+            return true;
+        else
+            System.out.println("EventKey has an invaled value of " + lookUpEventKey);
+        
+        return false;
+    }
     
     private void LookUpLength(int eKey){
-        if (eKey >=0 || eKey <=21)
-            if (eKey == 13)  eventLength = 3;
-            else eventLength = 1;
+        if (ValidateEventKeyRange(eKey))
+            if (eKey == 13)  SetEventLength(3);
+            else SetEventLength(1);
         else 
             System.out.println("EventKey has an invaled value of " + eKey);
     }//LookUpLength
     
             
-    public int EventKey() {
+    public int GetEventKey() {
         
         return eventKey;
         
     }//EventKey
     
-    public int EventLength() {
+    public int GetEventLength() {
         
         return eventLength;
         
     }//EventLength
     
-    public String EventDescription(){
+    public String GetEventDescription(){
         
         return eventDescription;
         
     }//EventDescription
     
+    private int GetCurrentEvent(){
+        return currentEventKey;
+    }
+    
+    private void SetEventKey( int keyOfEvent){
+        eventKey = keyOfEvent;
+    }
+    
+    private void SetEventLength(int lengthOfEvent){
+        eventLength = lengthOfEvent;
+    }
+    
+    private void SetEventDescription(String descriptionOfEvent){
+        eventDescription = descriptionOfEvent;
+    }
+    
+    private void SetCurrentEvent(int keyOfEvent){
+        currentEventKey = keyOfEvent;
+    }
+    
+    
+    
     public RandomEventTable() {
+          
+        SetCurrentEvent(0);
         
-        die1 = generator.nextInt(6);
-        die2 = generator.nextInt(6);
-        
-        //System.out.println("Die1: " + (die1 + 1));
-        //System.out.println("Die2: " + (die2 + 1));
-        
-        currentEvent = 0;
-        
-        this.KeyLookup(die1, die2);
-        this.LookupDescription(eventKey);
-        this.LookUpLength(eventKey);
+        this.KeyLookup(RandomSixSideDie(), RandomSixSideDie());
+        this.LookupDescription(GetEventKey());
+        this.LookUpLength(GetEventKey());
         
     }//RandomEventTable()
+
+    private int RandomSixSideDie() {
+        return RandomGenerator.nextInt(6);
+    }
        
     public RandomEventTable(int inEvent) {
-     
-        die1 = generator.nextInt(6);
-        die2 = generator.nextInt(6);
         
-        //System.out.println("Die1: " + (die1 + 1));
-        //System.out.println("Die2: " + (die2 + 1));
+        SetCurrentEvent(inEvent);
         
-        currentEvent = inEvent;
-        
-        this.KeyLookup(die1, die2);
-        this.LookupDescription(eventKey);
-        this.LookUpLength(eventKey);
+        this.KeyLookup(RandomSixSideDie(), RandomSixSideDie());
+        this.LookupDescription(GetEventKey());
+        this.LookUpLength(GetEventKey());
         
     }//RandomEventTable(int inEvent)
         
     public RandomEventTable(int inEvent, int die1, int die2){
         
-        currentEvent = inEvent;
+        SetCurrentEvent(inEvent);
         
         this.KeyLookup(die1, die2);
-        this.LookupDescription(eventKey);
-        this.LookUpLength(eventKey);
-    }//RandomTable(int inEvent, int die1, int die2)
+        this.LookupDescription(GetEventKey());
+        this.LookUpLength(GetEventKey());
+        
+    }//RandomTable(int inEvent, int firstSixSideDie, int secondSixSideDie)
     
     public void NewRandomEvent(){
-     
-        die1 = generator.nextInt(6);
-        die2 = generator.nextInt(6);
         
-        //System.out.println("Die1: " + (die1 + 1));
-        //System.out.println("Die2: " + (die2 + 1));
+        SetCurrentEvent(0);
         
-        currentEvent = 0;
-        
-        this.KeyLookup(die1, die2);
-        this.LookupDescription(eventKey);
-        this.LookUpLength(eventKey);        
+        this.KeyLookup(RandomSixSideDie(), RandomSixSideDie());
+        this.LookupDescription(GetEventKey());
+        this.LookUpLength(GetEventKey());        
         
     }//NewRandomEvent()
     
     public void NewRandomEvent(int inEvent){
-     
-        die1 = generator.nextInt(6);
-        die2 = generator.nextInt(6);
+
+        SetCurrentEvent(inEvent);
         
-        //System.out.println("Die1: " + (die1 + 1));
-        //System.out.println("Die2: " + (die2 + 1));
-        
-        currentEvent = inEvent;
-        
-        this.KeyLookup(die1, die2);
-        this.LookupDescription(eventKey);
-        this.LookUpLength(eventKey);        
+        this.KeyLookup(RandomSixSideDie(), RandomSixSideDie());
+        this.LookupDescription(GetEventKey());
+        this.LookUpLength(GetEventKey());        
         
     }//NewRandomEvent(int inEvent){
     
     public void NewRandomEvent(int inEvent, int d1, int d2){
         
-        currentEvent = inEvent;
-        
-        //System.out.println("NewRandomEvent(int,int,int)");
-        //System.out.println("Die1: " + (d1 + 1));
-        //System.out.println("Die2: " + (d2 + 1));
-        
+        SetCurrentEvent(inEvent);
+
         this.KeyLookup(d1, d2);
-        this.LookupDescription(eventKey);
-        this.LookUpLength(eventKey);
-    }//NewRandomEvent(int inEvent, int Die1, int die2){
+        this.LookupDescription(GetEventKey());
+        this.LookUpLength(GetEventKey());
+        
+    }//NewRandomEvent(int inEvent, int Die1, int secondSixSideDie){
             
-    
 }//class

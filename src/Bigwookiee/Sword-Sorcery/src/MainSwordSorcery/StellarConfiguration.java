@@ -13,69 +13,75 @@ package MainSwordSorcery;
 
 
 public class StellarConfiguration {
-  int yellowSun;
-  char redSun;
+  int yellowSunPosition;
+  char redSunPosition;
+  char blueSunPosition;
+  
   boolean redSunAscendent;
   boolean redSunDescendent;
-  char blueSun;
+ 
   
-  public StellarConfiguration(char rSun){
+  public StellarConfiguration(char positionOfRedSun){
       
-      yellowSun = 1;
-      redSun = rSun;
+      SetYellowSunPosition(1);
       
-      if(Character.isUpperCase(redSun))
-        Character.toLowerCase(redSun);
       
-      switch (redSun) {
+      if(Character.isUpperCase(positionOfRedSun))
+        Character.toLowerCase(positionOfRedSun);
+      
+      SetRedSunPosition(positionOfRedSun);
+      
+      
+      // Determins the position of the blue sun in reference to the red sun position.
+      switch (GetRedSunPosition()) {
           case 'a' : 
-              blueSun = 'g';
+               SetBlueSunPosition('g');
               break;
               
           case 'b' : 
-              blueSun = 'h';
+              SetBlueSunPosition('h');
               break;
               
           case 'c' : 
-              blueSun = 'i';
+              SetBlueSunPosition('i');
               break;
               
           case 'd' :
-              blueSun = 'j';
+              SetBlueSunPosition('j');
               break;
               
           case 'e' :
-              blueSun = 'k';
+              SetBlueSunPosition('k');
               break;
               
           case 'f' :
-              blueSun = 'l';
+              SetBlueSunPosition('l');
               break;
               
           case 'g' : 
-              blueSun = 'a';
+              SetBlueSunPosition('a');
               break;
 
           case 'h' : 
-              blueSun = 'b';
+              SetBlueSunPosition('b');
               break;
               
           case 'i' : 
-              blueSun = 'c';
+              SetBlueSunPosition('c');
               break;
               
           case 'j' :
-              blueSun = 'd';
+              SetBlueSunPosition('d');
               break;
               
           case 'k' :
-              blueSun = 'e';
+              SetBlueSunPosition('e');
               break;
               
           case 'l' :
-              blueSun = 'f';
+              SetBlueSunPosition('f');
               break;      
-      }
+      }//switch
       
       SetSunPhase();
       
@@ -83,42 +89,54 @@ public class StellarConfiguration {
   
   public void AdvanceSuns(){
       
-      if (yellowSun < 27)
-        yellowSun++;
-      else
-        yellowSun = 1;
+      int intSunPosition;
+      char charSunPosition;
       
-      if (redSun < 'l')  //That first char is not a one, it is an L. 
-        redSun++;
+      if (GetYelloSunPosition() < 27){
+        intSunPosition = GetYelloSunPosition();
+        intSunPosition++;
+        SetYellowSunPosition(intSunPosition);
+      }//if
+      else
+        SetYellowSunPosition(1);
+      
+      if (GetRedSunPosition() < 'l'){  //That first char is not a one, it is an L. 
+        charSunPosition = GetRedSunPosition();
+        charSunPosition++;
+        SetRedSunPosition(charSunPosition);
+      }//if
       else 
-          redSun = 'a';
+          SetRedSunPosition('a');
       
-      if (blueSun < 'l')  //That first char is not a one, it is an L.
-          blueSun++;
+      if (GetBlueSunPosition() < 'l'){  //That first char is not a one, it is an L.
+          charSunPosition = GetBlueSunPosition();
+          charSunPosition++;
+          SetBlueSunPosition(charSunPosition); 
+      }//if
       else
-          blueSun = 'a';
+          SetBlueSunPosition('a');
       
       SetSunPhase();
   }//AdvanceSuns()
   
   private void CheckMinorSunsPosition(char p1, char p2, char p3){
-    if (redSun == p1 || redSun == p2 || redSun == p3){
-                redSunAscendent = true;
-                redSunDescendent = false;
-                }
+    if (GetRedSunPosition() == p1 || GetRedSunPosition() == p2 || GetRedSunPosition() == p3){
+                SetRedSunAscendent(true);
+                SetRedSunDescendent(false);
+                }//if
                 else              
-                  if (blueSun == p1 || blueSun == p2 || blueSun == p3){
-                    redSunAscendent = false;
-                    redSunDescendent = true;
-                  }
+                  if (GetBlueSunPosition() == p1 || GetBlueSunPosition() == p2 || GetBlueSunPosition() == p3){
+                    SetRedSunAscendent(false);
+                    SetRedSunDescendent(true);
+                  }//if
                   else{
-                    redSunAscendent = false;
-                    redSunDescendent = false;
-                  }
+                    SetRedSunAscendent(false);
+                    SetRedSunDescendent(false);
+                  }//else
   }//CheckMinorSunsPosition(char p1, char p2, char p3)
   
   private void SetSunPhase(){
-      switch (yellowSun) {
+      switch (GetYelloSunPosition()) {
               case 1 :  
               case 2 :
                 CheckMinorSunsPosition('c','d','e');
@@ -139,8 +157,7 @@ public class StellarConfiguration {
               case 9 :
                 CheckMinorSunsPosition('f','g','h');
                 break;                  
-
-              
+             
               case 10 :
               case 11 :
                 CheckMinorSunsPosition('g','h','i');
@@ -205,14 +222,34 @@ public class StellarConfiguration {
   }//GetBlueSunIsInDeclension()
   
   public int GetYelloSunPosition(){
-      return yellowSun;
+      return yellowSunPosition;
   }//GetYelloSunPosition()
   
   public char GetRedSunPosition(){
-      return redSun;
+      return redSunPosition;
   }//GetRedSunPosition()
   
   public char GetBlueSunPosition(){
-      return blueSun;
+      return blueSunPosition;
   }//GetBlueDunPosition()
-}
+  
+  private void SetYellowSunPosition(int sP){
+      yellowSunPosition = sP;
+  }//SetYellowSunPosition(int sP)
+  
+  private void SetRedSunPosition(char sP){
+      redSunPosition = sP;
+  }//SetRedSunPosition(char sP)
+  
+  private void SetBlueSunPosition(char sP){
+      blueSunPosition = sP;
+  }//SetBlueSunPosition(char sP)
+  
+  private void SetRedSunAscendent(boolean sA){
+      redSunAscendent = sA;
+  }//SetRedSunAscendent(boolean sA)
+  
+  private void SetRedSunDescendent(boolean sA){
+      redSunDescendent = sA;
+  }//SetRedSunDescendent(boolean sA)
+}//class

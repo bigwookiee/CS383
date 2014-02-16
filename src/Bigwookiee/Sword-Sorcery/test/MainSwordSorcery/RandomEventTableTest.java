@@ -55,15 +55,15 @@ public class RandomEventTableTest {
         
         
         System.out.println("EventKey");
-        result = rEvent.EventKey();
+        result = rEvent.GetEventKey();
         System.out.println(result);
         
         System.out.println("EventLength");
-        result = rEvent.EventLength();
+        result = rEvent.GetEventLength();
         System.out.println(result);
         
         System.out.println("Event Description");
-        result1 = rEvent.EventDescription();
+        result1 = rEvent.GetEventDescription();
         System.out.println(result1 + "\n");
         
         while (d1 <= 5){
@@ -72,15 +72,15 @@ public class RandomEventTableTest {
                 
                 
                 System.out.println("EventKey");
-                result = rEvent.EventKey();
+                result = rEvent.GetEventKey();
                 System.out.println(result);
         
                 System.out.println("EventLength");
-                result = rEvent.EventLength();
+                result = rEvent.GetEventLength();
                 System.out.println(result);
         
                 System.out.println("Event Description");
-                result1 = rEvent.EventDescription();
+                result1 = rEvent.GetEventDescription();
                 System.out.println(result1 + "\n");
                
                 d2 = d2 + 1;
@@ -94,15 +94,15 @@ public class RandomEventTableTest {
                 
                 
                 System.out.println("EventKey");
-                result = rEvent.EventKey();
+                result = rEvent.GetEventKey();
                 System.out.println(result);
         
                 System.out.println("EventLength");
-                result = rEvent.EventLength();
+                result = rEvent.GetEventLength();
                 System.out.println(result);
         
                 System.out.println("Event Description");
-                result1 = rEvent.EventDescription();
+                result1 = rEvent.GetEventDescription();
                 System.out.println(result1 + "\n");
                
                 d2 = d2 + 1;
