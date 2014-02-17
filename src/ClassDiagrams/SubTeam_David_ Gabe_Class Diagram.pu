@@ -88,37 +88,7 @@ class RandomEvent{
 	Author: David Klingenberg
 }
 
-class RandomEventTable{
-	-eventKey : int
-	-eventLength : int
-	-eventDescription : int
-	-currentEvent : int
-	-RandomGenerator : Random
-	--
-	+<<constructor>>RandomEventTable()
-	+<<constructor>>RandomEventTable(inEvent : int)
-	+<<constructor>>RandomEventTable(inEvent : int, sixSidedDieOne : int, sixSidedDieTwo : int)
-	+RandomEventTableNew() : void
-	+RandomEventTableNew(inEvent : int) : void
-	+RandomEventTableNew(inEvent: int, sixSidedDieOne : int, sixSidedDieTwo : int) : void
-	-KeyLookup(sixSidedDieOne: int, sixSidedDieTwo: int) : void
-	-ValidaedDiceRangeForRandomEventTable(sixSidedDieOne : int, sixSidedDieTwo: int) : void	
-	-LookupDescription(lookUpEventKey : int) : void
-	-ValidateEventKeyRange(lookUpEventKey: int) : void
-	-LookUpLength(KeyOfEvent : int) : void
-	+getEventKey() : int
-	+getEventLength() : int
-	+getEventDescription() : String
-	+getEventDescription(eKey) : String
-	-GetCurrentEvent() : int
-	-SetEventKey(keyOfEvent : int) : void
-	-SetEventLength(lengthOfEvent:int) : void
-	-SetEventDescription(descriptionOfEvent : String) : void
-	-SetCurrentEvent(keyOfEvent : int) : void
-	-RandomSixSideDie() : int
-	==
-	Author: David Klingenberg
-} 
+
 
 class Diplomacy{
 	-neutral : NeutralArmy[]
@@ -188,15 +158,6 @@ class CounterSpells{
 	==
 	Author: Gabe Pearhill
 }
-<<<<<<< HEAD
-
-class PlayerOrderDetermination {
-	-player : Player[]
-	--
-	+RandomizePlayerOrder() : void
-	==
-	Author: David Klingenberg 
-}
 
 class Alliances{
 	-player : Player[]
@@ -214,7 +175,6 @@ class SwordSorcery{
 	Author: David Klingenberg
 }
 
-=======
 class CounterSpells
 class PlayerOrderDetermination{
 	--
@@ -224,7 +184,6 @@ class PlayerOrderDetermination{
 }
 class Alliances
 class SwordSorcery
->>>>>>> b6aebdf4c79c5b07b4a9172ef64400426069c325
 class MannaRegeneration {
 	-rate : int
 	--
@@ -250,24 +209,32 @@ class RandomMovment{
 
 Class GameSetUp{
 	--
-	+SelectScenaro() : void
+	+SelectScenaro(selection) : void
 	==
-	Author: David Klingenberg
+	Author: Gabe Pearhill
 }
 
-Class LoadSave{
+class VictoryConditions{
+	-points : int
+	-specialConditions : String
 	--
-	+SaveGame() : void
-	+LoadGame() : void
+	+checkForCondtion(map) : int
 	==
-	Author: David Klingenberg
+	Author: Gabe Pearhill
 }
 
+class LookUpTable{
+	-AppropriateTable
+	--
+	+LookUp(key) : SummaryObject
+	==
+	Author: Gabe Pearhill
+}
 
 SwordSorcery *-- GameTurn
-SwordSorcery *- LoadSave
 GameSetUp -* SwordSorcery
 Scenario -* GameSetUp 
+VictoryConditions "<b>1 per player</b>" --* Scenario
 
 Scenario *-- Player
 Scenario *-- Army
@@ -281,7 +248,7 @@ PreTurnPhase “<b>1..7</b>”  -o  PlayerTurnPhase
 PreTurnPhase --* RandomEvent
 PlayerOrderDetermination *-- PreTurnPhase
 Alliances --* PreTurnPhase
-RandomEvent --* RandomEventTable
+Alliances -- PlayerOrderDetermination : Allied players act in sequence
 
 PlayerTurnPhase *-- Player
 Player o-- “<b>1..6</b>” Army
@@ -291,6 +258,10 @@ NeutralArmy “<b>1..5</b>” -|> Army
 MovableUnit -- Spells : Affect unit(s),\nunit(s) movement,\nor hex(es)  
 MovableUnit -- CounterSpells : Cast by\nopposing player(s)
 CounterSpells - Spells : Negates Spells
+
+Spells *-- LookUpTable
+CounterSpells *-- LookUpTable
+RandomEvent *-- LookUpTable
 
 PostTurnPhase *-- RandomMovment
 StellarConfiguration --* PostTurnPhase
