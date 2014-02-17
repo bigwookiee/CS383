@@ -8,9 +8,8 @@ class Player{
 	+setRace(r : char) : void
 	+setNumber(n : int )
 	+getRace() : char
-	+getOrder() : int	
 	==
-	Author: David Klingenberg
+	Author: Gabe Pearhill
 }
 
 class Army{
