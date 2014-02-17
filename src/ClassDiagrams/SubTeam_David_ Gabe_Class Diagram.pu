@@ -175,7 +175,6 @@ class SwordSorcery{
 	Author: David Klingenberg
 }
 
-class CounterSpells
 class PlayerOrderDetermination{
 	--
 	+chooseNextPlayer(aliances) : int
