@@ -119,13 +119,13 @@ public class StellarConfiguration {
       SetSunPhase();
   }//AdvanceSuns()
   
-  private void CheckMinorSunsPosition(char p1, char p2, char p3){
-    if (GetRedSunPosition() == p1 || GetRedSunPosition() == p2 || GetRedSunPosition() == p3){
+  private void CheckMinorSunsPosition(char minorSunAscendentPositionOne, char minorSunAscendentPositionTwo, char minorSunAscendentPositionThree){
+    if (GetRedSunPosition() == minorSunAscendentPositionOne || GetRedSunPosition() == minorSunAscendentPositionTwo || GetRedSunPosition() == minorSunAscendentPositionThree){
                 SetRedSunAscendent(true);
                 SetRedSunDescendent(false);
                 }//if
                 else              
-                  if (GetBlueSunPosition() == p1 || GetBlueSunPosition() == p2 || GetBlueSunPosition() == p3){
+                  if (GetBlueSunPosition() == minorSunAscendentPositionOne || GetBlueSunPosition() == minorSunAscendentPositionTwo || GetBlueSunPosition() == minorSunAscendentPositionThree){
                     SetRedSunAscendent(false);
                     SetRedSunDescendent(true);
                   }//if
@@ -233,23 +233,23 @@ public class StellarConfiguration {
       return blueSunPosition;
   }//GetBlueDunPosition()
   
-  private void SetYellowSunPosition(int sP){
-      yellowSunPosition = sP;
+  private void SetYellowSunPosition(int sunPosition){
+      yellowSunPosition = sunPosition;
   }//SetYellowSunPosition(int sP)
   
-  private void SetRedSunPosition(char sP){
-      redSunPosition = sP;
+  private void SetRedSunPosition(char sunPosition){
+      redSunPosition = sunPosition;
   }//SetRedSunPosition(char sP)
   
-  private void SetBlueSunPosition(char sP){
-      blueSunPosition = sP;
+  private void SetBlueSunPosition(char sunPosition){
+      blueSunPosition = sunPosition;
   }//SetBlueSunPosition(char sP)
   
-  private void SetRedSunAscendent(boolean sA){
-      redSunAscendent = sA;
+  private void SetRedSunAscendent(boolean sunAscension){
+      redSunAscendent = sunAscension;
   }//SetRedSunAscendent(boolean sA)
   
-  private void SetRedSunDescendent(boolean sA){
-      redSunDescendent = sA;
+  private void SetRedSunDescendent(boolean sunDescendent){
+      redSunDescendent = sunDescendent;
   }//SetRedSunDescendent(boolean sA)
 }//class

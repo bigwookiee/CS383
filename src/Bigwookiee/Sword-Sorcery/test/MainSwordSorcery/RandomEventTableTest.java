@@ -68,7 +68,7 @@ public class RandomEventTableTest {
         
         while (d1 <= 5){
             while (d2 <= 5){
-                rEvent.NewRandomEvent(0, d1, d2);
+                rEvent.RandomEventTableNew(0, d1, d2);
                 
                 
                 System.out.println("EventKey");
@@ -90,7 +90,7 @@ public class RandomEventTableTest {
             d2 = 0;
         }
         
-         rEvent.NewRandomEvent(13, 5, 21);
+         rEvent.RandomEventTableNew(13, 5, 21);
                 
                 
                 System.out.println("EventKey");

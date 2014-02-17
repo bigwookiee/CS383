@@ -72,7 +72,7 @@ public class RandomEventTable {
                           
     }//KeyLookUp
 
-    private boolean ValidaedDiceRangeForRandomEventTable(int sixSidedDieOne, int sixSidedDieTwo) {
+    private boolean ValidaedDiceRangeForRandomEventTable(int sixSidedDieOne, int sixSidedDieTwo){
         
         if ((sixSidedDieOne >= 0 && sixSidedDieOne <= 5) && (sixSidedDieTwo >= 0 && sixSidedDieTwo <= 5))
                 return true;
@@ -199,12 +199,12 @@ public class RandomEventTable {
         return false;
     }
     
-    private void LookUpLength(int eKey){
-        if (ValidateEventKeyRange(eKey))
-            if (eKey == 13)  SetEventLength(3);
+    private void LookUpLength(int KeyOfEvent){
+        if (ValidateEventKeyRange(KeyOfEvent))
+            if (KeyOfEvent == 13)  SetEventLength(3);
             else SetEventLength(1);
         else 
-            System.out.println("EventKey has an invaled value of " + eKey);
+            System.out.println("EventKey has an invaled value of " + KeyOfEvent);
     }//LookUpLength
     
             
@@ -246,8 +246,6 @@ public class RandomEventTable {
         currentEventKey = keyOfEvent;
     }
     
-    
-    
     public RandomEventTable() {
           
         SetCurrentEvent(0);
@@ -272,17 +270,17 @@ public class RandomEventTable {
         
     }//RandomEventTable(int inEvent)
         
-    public RandomEventTable(int inEvent, int die1, int die2){
+    public RandomEventTable(int inEvent, int sixSidedDieOne, int sixSidedDieTwo){
         
         SetCurrentEvent(inEvent);
         
-        this.KeyLookup(die1, die2);
+        this.KeyLookup(sixSidedDieOne, sixSidedDieTwo);
         this.LookupDescription(GetEventKey());
         this.LookUpLength(GetEventKey());
         
     }//RandomTable(int inEvent, int firstSixSideDie, int secondSixSideDie)
     
-    public void NewRandomEvent(){
+    public void RandomEventTableNew(){
         
         SetCurrentEvent(0);
         
@@ -292,7 +290,7 @@ public class RandomEventTable {
         
     }//NewRandomEvent()
     
-    public void NewRandomEvent(int inEvent){
+    public void RandomEventTableNew(int inEvent){
 
         SetCurrentEvent(inEvent);
         
@@ -302,11 +300,11 @@ public class RandomEventTable {
         
     }//NewRandomEvent(int inEvent){
     
-    public void NewRandomEvent(int inEvent, int d1, int d2){
+    public void RandomEventTableNew(int inEvent, int sixSidedDieOne, int sixSidedDieTwo){
         
         SetCurrentEvent(inEvent);
 
-        this.KeyLookup(d1, d2);
+        this.KeyLookup(sixSidedDieOne, sixSidedDieTwo);
         this.LookupDescription(GetEventKey());
         this.LookUpLength(GetEventKey());
         
