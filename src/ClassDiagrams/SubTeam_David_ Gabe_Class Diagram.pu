@@ -106,6 +106,14 @@ class Spells{
    	==
    	Author: Gabe Pearhill
 }
+class VictoryConditions{
+	-points : int
+	-specialConditions : String
+	--
+	+checkForCondtion(map) : int
+	==
+	Author: Gabe Pearhill
+}
 class CounterSpells
 class PlayerOrderDetermination
 class Alliances
@@ -131,9 +139,6 @@ package GameSetUp{
 Package LoadSave{
 }
 
-
-
-
 SwordSorcery --* GameTurn
 SwordSorcery -* LoadSave
 GameSetUp *- SwordSorcery
@@ -141,6 +146,7 @@ Scenario *- GameSetUp
 
 Scenario --* Player
 Scenario --* Army
+VictoryConditions "<b>1 per player</b>" --* Scenario
 
 GameTurn *-- PostTurnPhase 
 GameTurn --* PreTurnPhase
