@@ -115,7 +115,12 @@ class VictoryConditions{
 	Author: Gabe Pearhill
 }
 class CounterSpells
-class PlayerOrderDetermination
+class PlayerOrderDetermination{
+	--
+	+chooseNextPlayer(aliances) : int
+	==
+	Author: Gabe Pearhill
+}
 class Alliances
 class SwordSorcery
 class MannaRegeneration {
